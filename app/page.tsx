@@ -34,23 +34,29 @@ export default function Home() {
     if (selectedGenre) {
       loadGenreGames();
     } else {
-      loadGames();
+      loadMovies();
     }
   }, [selectedGenre]);
 
-  const loadGames = async () => {
+  const loadMovies = async () => {
     setLoading(true);
     try {
-      const [gamesData, trendingData, topData] = await Promise.all([
-        rawgApi.getGames({ page_size: 20 }),
-        rawgApi.getGames({ ordering: '-added', page_size: 10 }),
-        rawgApi.getGames({ ordering: '-rating', page_size: 10 }),
-      ]);
-      setGames(gamesData.results);
-      setTrending(trendingData.results);
-      setTopRated(topData.results);
+      console.log('Loading movies...');
+
+      const gamesData = await rawgApi.getGames({ page_size: 20 });
+      console.log('Games loaded:', gamesData);
+
+      const trendingData = await rawgApi.getGames({ ordering: '-added', page_size: 10 });
+      console.log('Trending loaded:', trendingData);
+
+      const topData = await rawgApi.getGames({ ordering: '-rating', page_size: 10 });
+      console.log('Top rated loaded:', topData);
+
+      setGames(gamesData.results || []);
+      setTrending(trendingData.results || []);
+      setTopRated(topData.results || []);
     } catch (error) {
-      console.error('Error loading games:', error);
+      console.error('Error loading movies:', error);
     }
     setLoading(false);
   };
