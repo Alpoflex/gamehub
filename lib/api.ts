@@ -1,84 +1,95 @@
-import axios from 'axios';
-import { Game, GameDetails, Genre, Screenshot, ApiResponse } from '@/types';
+import { Game, ApiResponse } from '@/types';
 
-// RAWG API - Free tier: 20,000 requests/month
-const API_KEY = 'ded6383e44a74727b02d7e093e7c2c32';
-const BASE_URL = 'https://api.rawg.io/api';
-
-const api = axios.create({
-    baseURL: BASE_URL,
-    params: {
-        key: API_KEY,
+// Mock data for development
+const MOCK_GAMES: Game[] = [
+    {
+        id: 3498,
+        name: "Grand Theft Auto V",
+        background_image: "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg",
+        rating: 4.47,
+        released: "2013-09-17",
+        metacritic: 92,
+        platforms: [
+            { platform: { id: 4, name: "PC", slug: "pc" } },
+            { platform: { id: 187, name: "PlayStation 5", slug: "playstation5" } }
+        ],
+        genres: [
+            { id: 4, name: "Action", slug: "action" },
+            { id: 3, name: "Adventure", slug: "adventure" }
+        ],
+        parent_platforms: [
+            { platform: { id: 1, name: "PC", slug: "pc" } },
+            { platform: { id: 2, name: "PlayStation", slug: "playstation" } }
+        ]
     },
-});
+    {
+        id: 3328,
+        name: "The Witcher 3: Wild Hunt",
+        background_image: "https://media.rawg.io/media/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg",
+        rating: 4.66,
+        released: "2015-05-18",
+        metacritic: 93,
+        platforms: [
+            { platform: { id: 4, name: "PC", slug: "pc" } },
+            { platform: { id: 1, name: "Xbox One", slug: "xbox-one" } }
+        ],
+        genres: [
+            { id: 4, name: "Action", slug: "action" },
+            { id: 5, name: "RPG", slug: "role-playing-games-rpg" }
+        ],
+        parent_platforms: [
+            { platform: { id: 1, name: "PC", slug: "pc" } },
+            { platform: { id: 3, name: "Xbox", slug: "xbox" } }
+        ]
+    }
+];
 
 export const rawgApi = {
-    // Get games list
-    getGames: async (params?: {
-        page?: number;
-        page_size?: number;
-        search?: string;
-        genres?: string;
-        platforms?: string;
-        ordering?: string;
-    }): Promise<ApiResponse<Game>> => {
-        try {
-            const { data } = await api.get<ApiResponse<Game>>('/games', { params });
-            return data;
-        } catch (error) {
-            console.error('API Error:', error);
-            return { count: 0, next: null, previous: null, results: [] };
-        }
+    getGames: async (): Promise<ApiResponse<Game>> => {
+        // Return mock data for now
+        return {
+            count: 20,
+            next: null,
+            previous: null,
+            results: [...MOCK_GAMES, ...MOCK_GAMES, ...MOCK_GAMES, ...MOCK_GAMES, ...MOCK_GAMES].map((game, i) => ({
+                ...game,
+                id: game.id + i,
+                name: `${game.name} ${i > 1 ? i : ''}`
+            }))
+        };
     },
 
-    // Get game details
-    getGameDetails: async (id: number): Promise<GameDetails | null> => {
-        try {
-            const { data } = await api.get<GameDetails>(`/games/${id}`);
-            return data;
-        } catch (error) {
-            console.error('API Error:', error);
-            return null;
-        }
+    getGameDetails: async (id: number) => {
+        return null;
     },
 
-    // Get game screenshots
-    getGameScreenshots: async (id: number): Promise<Screenshot[]> => {
-        try {
-            const { data } = await api.get<ApiResponse<Screenshot>>(`/games/${id}/screenshots`);
-            return data.results;
-        } catch (error) {
-            console.error('API Error:', error);
-            return [];
-        }
+    getGameScreenshots: async (id: number) => {
+        return [];
     },
 
-    // Get genres
-    getGenres: async (): Promise<Genre[]> => {
-        try {
-            const { data } = await api.get<ApiResponse<Genre>>('/genres');
-            return data.results;
-        } catch (error) {
-            console.error('API Error:', error);
-            return [];
-        }
+    getGenres: async () => {
+        return [
+            { id: 4, name: "Action", slug: "action" },
+            { id: 51, name: "Indie", slug: "indie" },
+            { id: 3, name: "Adventure", slug: "adventure" },
+            { id: 5, name: "RPG", slug: "role-playing-games-rpg" },
+            { id: 10, name: "Strategy", slug: "strategy" },
+            { id: 2, name: "Shooter", slug: "shooter" },
+            { id: 40, name: "Casual", slug: "casual" },
+            { id: 14, name: "Simulation", slug: "simulation" },
+            { id: 7, name: "Puzzle", slug: "puzzle" },
+            { id: 11, name: "Arcade", slug: "arcade" },
+            { id: 83, name: "Platformer", slug: "platformer" },
+            { id: 1, name: "Racing", slug: "racing" }
+        ];
     },
 
-    // Search games
-    searchGames: async (query: string): Promise<Game[]> => {
-        try {
-            const { data } = await api.get<ApiResponse<Game>>('/games', {
-                params: { search: query, page_size: 12 },
-            });
-            return data.results;
-        } catch (error) {
-            console.error('API Error:', error);
-            return [];
-        }
+    searchGames: async (query: string) => {
+        return MOCK_GAMES.filter(g => g.name.toLowerCase().includes(query.toLowerCase()));
     },
 };
 
 export const getImageUrl = (url: string | null): string => {
     if (!url) return '/placeholder-game.jpg';
-    return url.replace('media/', 'media/crop/600/400/');
+    return url;
 };
