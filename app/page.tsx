@@ -4,10 +4,13 @@ import { useState, useEffect } from 'react';
 import { rawgApi } from '@/lib/api';
 import { Game, Genre } from '@/types';
 import GameCard from '@/components/GameCard';
+import LanguageToggle from '@/components/LanguageToggle';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Gamepad2, TrendingUp, Trophy, Search, Filter } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Home() {
+  const { t } = useLanguage();
   const [games, setGames] = useState<Game[]>([]);
   const [trending, setTrending] = useState<Game[]>([]);
   const [topRated, setTopRated] = useState<Game[]>([]);
@@ -95,6 +98,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen pb-20">
+      <LanguageToggle />
+
       {/* Hero */}
       <section className="relative py-20 px-6 text-center mb-12 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-transparent" />
@@ -108,14 +113,14 @@ export default function Home() {
             GameHub
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8">
-            Discover Your Next Favorite Game
+            {t('tagline')}
           </p>
 
           {/* Search */}
           <div className="max-w-2xl mx-auto relative">
             <input
               type="text"
-              placeholder="Search 500,000+ games..."
+              placeholder={t('searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-6 py-4 pl-14 bg-white/5 backdrop-blur-md border-2 border-purple-500/30 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-all"
