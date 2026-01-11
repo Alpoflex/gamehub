@@ -22,34 +22,59 @@ export const rawgApi = {
         platforms?: string;
         ordering?: string;
     }): Promise<ApiResponse<Game>> => {
-        const { data } = await api.get<ApiResponse<Game>>('/games', { params });
-        return data;
+        try {
+            const { data } = await api.get<ApiResponse<Game>>('/games', { params });
+            return data;
+        } catch (error) {
+            console.error('API Error:', error);
+            return { count: 0, next: null, previous: null, results: [] };
+        }
     },
 
     // Get game details
-    getGameDetails: async (id: number): Promise<GameDetails> => {
-        const { data } = await api.get<GameDetails>(`/games/${id}`);
-        return data;
+    getGameDetails: async (id: number): Promise<GameDetails | null> => {
+        try {
+            const { data } = await api.get<GameDetails>(`/games/${id}`);
+            return data;
+        } catch (error) {
+            console.error('API Error:', error);
+            return null;
+        }
     },
 
     // Get game screenshots
     getGameScreenshots: async (id: number): Promise<Screenshot[]> => {
-        const { data } = await api.get<ApiResponse<Screenshot>>(`/games/${id}/screenshots`);
-        return data.results;
+        try {
+            const { data } = await api.get<ApiResponse<Screenshot>>(`/games/${id}/screenshots`);
+            return data.results;
+        } catch (error) {
+            console.error('API Error:', error);
+            return [];
+        }
     },
 
     // Get genres
     getGenres: async (): Promise<Genre[]> => {
-        const { data } = await api.get<ApiResponse<Genre>>('/genres');
-        return data.results;
+        try {
+            const { data } = await api.get<ApiResponse<Genre>>('/genres');
+            return data.results;
+        } catch (error) {
+            console.error('API Error:', error);
+            return [];
+        }
     },
 
     // Search games
     searchGames: async (query: string): Promise<Game[]> => {
-        const { data } = await api.get<ApiResponse<Game>>('/games', {
-            params: { search: query, page_size: 12 },
-        });
-        return data.results;
+        try {
+            const { data } = await api.get<ApiResponse<Game>>('/games', {
+                params: { search: query, page_size: 12 },
+            });
+            return data.results;
+        } catch (error) {
+            console.error('API Error:', error);
+            return [];
+        }
     },
 };
 
