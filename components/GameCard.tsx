@@ -46,7 +46,7 @@ export default function GameCard({ game }: GameCardProps) {
                     </div>
 
                     <div className="flex flex-wrap gap-2 mb-3">
-                        {game.parent_platforms?.slice(0, 4).map((p) => (
+                        {game.parent_platforms && game.parent_platforms.slice(0, 4).map((p) => (
                             <span
                                 key={p.platform.id}
                                 className="platform-badge px-2 py-1 rounded text-xs"
@@ -58,7 +58,7 @@ export default function GameCard({ game }: GameCardProps) {
                     </div>
 
                     <div className="flex flex-wrap gap-1">
-                        {game.genres?.slice(0, 2).map((genre) => (
+                        {game.genres && game.genres.slice(0, 2).map((genre) => (
                             <span
                                 key={genre.id}
                                 className="text-xs px-2 py-1 bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/30"
