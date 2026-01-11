@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Use a fresh API key
-const API_KEY = '3c3c63ad09msh2a4f0ec8b3e3c3cp1a0e6ejsn9e0f4d8fc64a';
+// User's RAWG API key
+const API_KEY = 'bdd3eb25b29f41e5b7403c47892bbd7e';
 const BASE_URL = 'https://api.rawg.io/api';
 
 export async function GET(request: NextRequest) {
     const { searchParams } = request.nextUrl;
     const endpoint = searchParams.get('endpoint') || '/games';
 
-    // Remove 'endpoint' and build clean params
+    // Build params
     const params = new URLSearchParams();
     params.set('key', API_KEY);
 
