@@ -44,13 +44,15 @@ export default function Home() {
       console.log('Loading movies...');
 
       const gamesData = await rawgApi.getGames({ page_size: 20 });
-      console.log('Games loaded:', gamesData);
+      console.log('Games response:', JSON.stringify(gamesData, null, 2));
+      console.log('Games count:', gamesData?.count);
+      console.log('Games results length:', gamesData?.results?.length);
 
       const trendingData = await rawgApi.getGames({ ordering: '-added', page_size: 10 });
-      console.log('Trending loaded:', trendingData);
+      console.log('Trending results length:', trendingData?.results?.length);
 
       const topData = await rawgApi.getGames({ ordering: '-rating', page_size: 10 });
-      console.log('Top rated loaded:', topData);
+      console.log('Top rated results length:', topData?.results?.length);
 
       setGames(gamesData.results || []);
       setTrending(trendingData.results || []);
