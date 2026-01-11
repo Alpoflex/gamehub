@@ -167,12 +167,14 @@ export default function Home() {
                 <div key={i} className="skeleton h-80 rounded-xl" />
               ))}
             </div>
-          ) : (
+          ) : trending && trending.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
               {trending.map((game) => (
                 <GameCard key={game.id} game={game} />
               ))}
             </div>
+          ) : (
+            <p className="text-gray-500 text-center py-10">No games found</p>
           )}
         </section>
 
@@ -190,12 +192,14 @@ export default function Home() {
                 <div key={i} className="skeleton h-80 rounded-xl" />
               ))}
             </div>
-          ) : (
+          ) : games && games.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {games.map((game) => (
                 <GameCard key={game.id} game={game} />
               ))}
             </div>
+          ) : (
+            <p className="text-gray-500 text-center py-10">No games found</p>
           )}
         </section>
 
@@ -211,12 +215,14 @@ export default function Home() {
                 <div key={i} className="skeleton h-80 rounded-xl" />
               ))}
             </div>
-          ) : (
+          ) : topRated && topRated.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
               {topRated.map((game) => (
                 <GameCard key={game.id} game={game} />
               ))}
             </div>
+          ) : (
+            <p className="text-gray-500 text-center py-10">No games found</p>
           )}
         </section>
       </div>
