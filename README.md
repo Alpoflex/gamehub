@@ -1,52 +1,81 @@
 # GameHub 🎮
 
-Your game library is massive. Finding what to play next shouldn't be.
+**Your Ultimate Gaming Discovery Platform.**
 
-## What's this?
+A modern gaming dashboard powered by RAWG API, featuring 500,000+ games with ratings, screenshots, trailers, and a stunning neon gaming aesthetic.
 
-Gaming discovery platform pulling from RAWG's database of 500k+ games. Built it because scrolling through Steam's store page was driving me crazy.
+## Features
 
-**Features:**
-- Search games instantly
-- Filter by genre (RPG, FPS, Strategy, etc.)
-- See ratings, platforms, release dates
-- Get game details, screenshots, trailers
-- Switch between English/Turkish 🇬🇧🇹🇷
+*   **500,000+ Games**: Complete RAWG database access
+*   **Real-Time Search**: Instant game discovery
+*   **Genre Filtering**: 12 popular game genres
+*   **Platform Badges**: PS, Xbox, PC, Switch, Mobile
+*   **Ratings & Reviews**: Metacritic scores & user ratings
+*   **Trending Games**: See what's hot right now
+*   **Top Rated**: All-time gaming classics
+*   **Bilingual**: English/Turkish support 🇬🇧🇹🇷
+*   **Neon Gaming Theme**: Purple, blue, and pink aesthetics
 
-## Tech Stack
+## Technologies
 
-Next.js • TypeScript • Tailwind • RAWG API • Framer Motion
+*   **Next.js 16** (App Router)
+*   **TypeScript**
+*   **Tailwind CSS v4**
+*   **Axios** (API Calls)
+*   **Framer Motion** (Animations)
+*   **RAWG API** (Gaming Database)
+*   **Lucide React** (Icons)
 
-Went with neon purple/pink theme because... well, gaming.
+## Setup
 
-## Quick Start
-
-1. **Get RAWG API key** (free)
-   - Go to [https://rawg.io/apidocs](https://rawg.io/apidocs)
-   - Sign up → Generate key
-
-2. **Setup**
+1. **Clone the repository**
 ```bash
 git clone https://github.com/Alpoflex/gamehub.git
 cd gamehub
+```
+
+2. **Install dependencies**
+```bash
 npm install
-echo "RAWG_API_KEY=your_key_here" > .env.local
+```
+
+3. **Get RAWG API Key**
+   - Visit [https://rawg.io/apidocs](https://rawg.io/apidocs)
+   - Sign up for a free account
+   - Generate your API key
+
+4. **Create environment file**
+```bash
+# Create .env.local file in root directory
+echo "RAWG_API_KEY=your_api_key_here" > .env.local
+```
+
+5. **Run the development server**
+```bash
 npm run dev
 ```
 
-3. **Play**
-   - Hit localhost:3000
-   - Search, filter, discover
+6. **Open your browser**
+   - Navigate to `http://localhost:3000`
 
-## Notes
+## Environment Variables
 
-- No login required
-- Your data stays local
-- API has 20k req/month free tier (plenty for personal use)
-- Language toggle top-right if you prefer Turkish
+Create a `.env.local` file in the root directory:
 
-Built this over a few evenings. Still adding features when I have time.
+```env
+RAWG_API_KEY=your_rawg_api_key_here
+```
+
+**⚠️ Important:** Never commit your `.env.local` file to Git. It's already in `.gitignore`.
+
+## Usage
+
+*   **Browse Games**: Scroll through trending, popular, and top-rated
+*   **Search**: Type in search bar for instant results
+*   **Filter by Genre**: Click genre pills to filter
+*   **View Details**: Click any game card for more info
+*   **Switch Language**: Click EN/TR button in top-right corner
 
 ---
 
-*Uses RAWG API for game data. Not affiliated with any game platforms.*
+*A portfolio project showcasing API integration, bilingual support, gaming UI/UX, and modern web design.*
