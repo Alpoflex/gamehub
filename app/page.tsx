@@ -18,7 +18,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadGames();
+    loadMovies();
     loadGenres();
   }, []);
 
