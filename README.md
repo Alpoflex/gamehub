@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GameHub 🎮
 
-## Getting Started
+**Your Ultimate Gaming Discovery Platform.**
 
-First, run the development server:
+A modern gaming dashboard powered by RAWG API, featuring 500,000+ games with ratings, screenshots, trailers, and a stunning neon gaming aesthetic.
+
+## Features
+
+*   **500,000+ Games**: Complete RAWG database access
+*   **Real-Time Search**: Instant game discovery
+*   **Genre Filtering**: 12 popular game genres
+*   **Platform Badges**: PS, Xbox, PC, Switch, Mobile
+*   **Ratings & Reviews**: Metacritic scores & user ratings
+*   **Trending Games**: See what's hot right now
+*   **Top Rated**: All-time gaming classics
+*   **Neon Gaming Theme**: Purple, blue, and pink aesthetics
+*   **Wishlist**: Save your favorite games (coming soon)
+
+## Technologies
+
+*   **Next.js 16** (App Router)
+*   **TypeScript**
+*   **Tailwind CSS v4**
+*   **Axios** (API Calls)
+*   **Framer Motion** (Animations)
+*   **RAWG API** (Gaming Database)
+*   **Lucide React** (Icons)
+
+## Usage
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` and explore the gaming universe!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*A portfolio project showcasing API integration, gaming UI/UX, and modern web design.*
