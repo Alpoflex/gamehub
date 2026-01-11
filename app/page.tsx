@@ -13,7 +13,7 @@ export default function Home() {
   const [topRated, setTopRated] = useState<Game[]>([]);
   const [genres, setGenres] = useState<Genre[]>([]);
   const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
-  const [search Query, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<Game[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -145,8 +145,8 @@ export default function Home() {
                 key={genre.id}
                 onClick={() => setSelectedGenre(selectedGenre === genre.id ? null : genre.id)}
                 className={`px-6 py-3 rounded-full font-semibold transition-all ${selectedGenre === genre.id
-                    ? 'neon-btn'
-                    : 'bg-white/5 text-white hover:bg-white/10 border-2 border-purple-500/30'
+                  ? 'neon-btn'
+                  : 'bg-white/5 text-white hover:bg-white/10 border-2 border-purple-500/30'
                   }`}
               >
                 {genre.name}
