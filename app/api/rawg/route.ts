@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Get API key from environment variable
 const API_KEY = process.env.RAWG_API_KEY || '';
 const BASE_URL = 'https://api.rawg.io/api';
 
@@ -8,7 +7,6 @@ export async function GET(request: NextRequest) {
     const { searchParams } = request.nextUrl;
     const endpoint = searchParams.get('endpoint') || '/games';
 
-    // Build params
     const params = new URLSearchParams();
     params.set('key', API_KEY);
 

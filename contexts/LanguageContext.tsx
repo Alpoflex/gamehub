@@ -12,11 +12,9 @@ interface LanguageContextType {
 
 const translations = {
     en: {
-        // Hero
         tagline: "Discover Your Next Favorite Game",
         searchPlaceholder: "Search 500,000+ games...",
 
-        // Sections
         searchResults: "Search Results",
         browseGenre: "Browse by Genre",
         trendingNow: "Trending Now",
@@ -24,22 +22,18 @@ const translations = {
         topRated: "Top Rated",
         noGamesFound: "No games found",
 
-        // Game Detail
         about: "About",
         developer: "Developer",
         publisher: "Publisher",
         back: "Back",
 
-        // Common
         loading: "Loading...",
         gameNotFound: "Game not found",
     },
     tr: {
-        // Hero
         tagline: "Bir Sonraki Favori Oyununu Keşfet",
         searchPlaceholder: "500,000+ oyun ara...",
 
-        // Sections
         searchResults: "Arama Sonuçları",
         browseGenre: "Türe Göre Gözat",
         trendingNow: "Şu An Trend",
@@ -47,13 +41,11 @@ const translations = {
         topRated: "En İyi Puanlananlar",
         noGamesFound: "Oyun bulunamadı",
 
-        // Game Detail
         about: "Hakkında",
         developer: "Geliştirici",
         publisher: "Yayıncı",
         back: "Geri",
 
-        // Common
         loading: "Yükleniyor...",
         gameNotFound: "Oyun bulunamadı",
     },

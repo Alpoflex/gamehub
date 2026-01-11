@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { Game, GameDetails, Genre, Screenshot, ApiResponse } from '@/types';
 
-// Use our Next.js API route
 const API_BASE = '/api/rawg';
 
 const api = axios.create({
@@ -9,7 +8,6 @@ const api = axios.create({
 });
 
 export const rawgApi = {
-    // Get games list
     getGames: async (params?: {
         page?: number;
         page_size?: number;
@@ -31,7 +29,6 @@ export const rawgApi = {
         }
     },
 
-    // Get game details
     getGameDetails: async (id: number): Promise<GameDetails | null> => {
         try {
             const { data } = await api.get<GameDetails>(`?endpoint=/games/${id}`);
@@ -42,7 +39,6 @@ export const rawgApi = {
         }
     },
 
-    // Get game screenshots
     getGameScreenshots: async (id: number): Promise<Screenshot[]> => {
         try {
             const { data } = await api.get<ApiResponse<Screenshot>>(`?endpoint=/games/${id}/screenshots`);
@@ -53,7 +49,6 @@ export const rawgApi = {
         }
     },
 
-    // Get genres
     getGenres: async (): Promise<Genre[]> => {
         try {
             const { data } = await api.get<ApiResponse<Genre>>('?endpoint=/genres');
@@ -64,7 +59,6 @@ export const rawgApi = {
         }
     },
 
-    // Search games
     searchGames: async (query: string): Promise<Game[]> => {
         try {
             const { data } = await api.get<ApiResponse<Game>>(`?endpoint=/games&search=${encodeURIComponent(query)}&page_size=12`);
@@ -78,6 +72,5 @@ export const rawgApi = {
 
 export const getImageUrl = (url: string | null): string => {
     if (!url) return '/placeholder-game.jpg';
-    // Optimize image size
     return url.replace('media/', 'media/crop/600/400/');
 };
