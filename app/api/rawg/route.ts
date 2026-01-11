@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// User's RAWG API key
-const API_KEY = 'bdd3eb25b29f41e5b7403c47892bbd7e';
+// Get API key from environment variable
+const API_KEY = process.env.RAWG_API_KEY || '';
 const BASE_URL = 'https://api.rawg.io/api';
 
 export async function GET(request: NextRequest) {
